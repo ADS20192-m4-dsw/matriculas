@@ -1,14 +1,10 @@
 package br.com.vovolinux.matriculas.entidade;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Turma {
@@ -18,22 +14,16 @@ public class Turma {
 	private Long id;
 	
 	private String nome;
+	
+	@ManyToOne
+	private Curso curso;
 
-	@OneToMany
-	@JoinColumn(name="turma_id")
-	private List<Disciplina> disciplinas= new ArrayList<>();
-	
-	
 	public Long getId() {
 		return id;
 	}
 
 	public String getNome() {
 		return nome;
-	}
-
-	public List<Disciplina> getDisciplinas() {
-		return disciplinas;
 	}
 
 	public void setId(Long id) {
